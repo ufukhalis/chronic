@@ -18,12 +18,6 @@ You can create a task like below example.
     	"period" : 1 # Period of your task
     }
     
-##### Some Notes
-Period accepts seconds.
-
-You can run multiple command with using `;` character.
-
-
 You can delete your task like below example.
 
     DELETE http://{YOUR_HOST_IP}:8080/task/{YOUR_TASK_NAME}
@@ -31,6 +25,12 @@ You can delete your task like below example.
 You can request your task logs like below example.
 
     GET http://{YOUR_HOST_IP}:8080/log/{YOUR_TASK_NAME}
+
+## Some Warnings
+
+Period accepts seconds.
+
+You can run multiple command with using `;` character.
 
 Note
 ---
