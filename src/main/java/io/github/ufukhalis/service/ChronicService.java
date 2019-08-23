@@ -9,8 +9,9 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
-import java.io.*;
+import java.io.File;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -52,7 +53,9 @@ public class ChronicService {
     }
 
     private Disposable createScheduler(Task task) {
-        return Flux.interval(Duration.ofSeconds(task.getPeriod()))
+        long startTime = Duration.between(LocalDateTime.now(), task.getStartDate()).toMinutes();
+
+        return Flux.interval(Duration.ofMinutes(startTime), Duration.ofSeconds(task.getPeriod()))
                 .doOnEach(ignore -> {
                     final Process process = this.PROCESS_MAP.get(task.getName());
                     if (process != null) {
