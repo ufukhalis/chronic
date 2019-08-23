@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
+@RequestMapping("/task")
 public class ChronicController {
 
     private ChronicService chronicService;
